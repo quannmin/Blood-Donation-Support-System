@@ -1,125 +1,143 @@
+Blood Donation Support System
+Overview
+The Blood Donation Support System is an application designed to facilitate blood donation processes for a medical center. This system connects blood donors with recipients, manages blood inventory, and streamlines the entire donation workflow from request to transfusion.
+Features
 
-https://img.shields.io/badge/version-1.0.0-blue.svg </br>
-https://img.shields.io/badge/license-MIT-green.svg </br>
-https://img.shields.io/badge/.NET-6.0-purple.svg </br>
-<p align="center">
-  <img src="https://via.placeholder.com/200x200?text=Blood+Donation" alt="Blood Donation System Logo" width="200" height="200"/>
-</p>
+User Management: Registration and profiles for donors and recipients
+Blood Type Compatibility: Advanced matching based on blood types and transfusion types
+Donation Process Tracking: Complete workflow management from request to transfusion
+Emergency Notification: Critical blood need alerts to potential donors
+Inventory Management: Track available blood units, expiry dates, and usage
+Proximity Search: Find donors/recipients based on geographical distance
+Health Check Tracking: Record and monitor donor health metrics
+Reporting & Dashboard: Analytics on donations, usage, and inventory levels
 
-Connecting donors to recipients. Saving lives one donation at a time.
-
-
-✨ Overview
-The Blood Donation Support System is a comprehensive platform designed to revolutionize how medical centers manage blood donations. By leveraging modern technology, we're creating a seamless connection between donors, recipients, and medical staff – making the life-saving process of blood donation more efficient than ever.
-🚀 Key Features
-FeatureDescription👥 User ManagementIntuitive profiles for donors, recipients, and staff🧬 Blood MatchingAdvanced compatibility algorithms for safe transfusions📱 Emergency AlertsReal-time notifications for urgent blood needs📍 Proximity SearchLocation-based donor finding for time-critical situations📊 Inventory ControlComplete tracking of blood units with expiry monitoring📋 Health ScreeningDigital health check recording and monitoring📈 Analytics DashboardComprehensive reporting on donations and usage🔔 Smart RemindersAutomatic notifications for eligible donors
-💻 Technology Stack
-<p align="center">
-  <img src="https://via.placeholder.com/80x80?text=.NET" alt=".NET" width="80" height="80"/>
-  <img src="https://via.placeholder.com/80x80?text=EF+Core" alt="Entity Framework Core" width="80" height="80"/>
-  <img src="https://via.placeholder.com/80x80?text=SQL" alt="SQL Server" width="80" height="80"/>
-  <img src="https://via.placeholder.com/80x80?text=C%23" alt="C#" width="80" height="80"/>
-  <img src="https://via.placeholder.com/80x80?text=Razor" alt="Razor Pages" width="80" height="80"/>
-</p>
+Technology Stack
 
 Backend: ASP.NET Core 6.0
-Database: SQL Server with Entity Framework Core
-Frontend: Razor Pages / MVC with Bootstrap
+ORM: Entity Framework Core 6.0
+Database: SQL Server
+Frontend: Razor Pages / MVC
 Authentication: ASP.NET Core Identity
-Location Services: Geolocation API for proximity features
+Mapping: Location-based services for proximity search
 
-🔧 Installation
+Getting Started
 Prerequisites
 
 Visual Studio 2022 or higher
 .NET 6.0 SDK
-SQL Server
+SQL Server (Local or Express)
 Git
 
-Quick Start
-bash# Clone the repository
+Installation
+
+Clone the repository:
 git clone https://github.com/yourusername/PRN232_Blood_Donation_Support_System.git
 
-# Navigate to project folder
-cd PRN232_Blood_Donation_Support_System
+Open the solution in Visual Studio.
+Update the connection string in appsettings.json:
+json"ConnectionStrings": {
+  "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=BloodDonationDB;Trusted_Connection=True;MultipleActiveResultSets=true"
+}
 
-# Restore dependencies
-dotnet restore
+Run database migrations:
+Add-Migration InitialCreate
+Update-Database
 
-# Update database with migrations
-dotnet ef database update
-
-# Run the application
+Run the application:
 dotnet run
-📊 Database Schema
-<p align="center">
-  <img src="https://via.placeholder.com/600x400?text=Database+Schema" alt="Database Schema" width="600"/>
-</p>
-Our system uses a Code-First approach with carefully designed entities:
 
-Users - Core user information
-DonorProfiles - Comprehensive donor details
-BloodTypes - Blood classification system
-BloodRequests - Donation request management
-BloodInventory - Stock management system
-DonationProcess - Complete workflow tracking
 
-🔄 Workflow Visualization
-<p align="center">
-  <img src="https://via.placeholder.com/700x300?text=Donation+Workflow" alt="Donation Workflow" width="700"/>
-</p>
+Database Schema
+The system uses a Code-First approach with Entity Framework Core. Key entities include:
 
-📋 Request - Blood request is created
-🔍 Inventory Check - System checks available stock
-👥 Donor Matching - Compatible donors are identified
-🔔 Notification - Potential donors are alerted
-📅 Scheduling - Donation appointments are arranged
-🩺 Health Screening - Donor eligibility is confirmed
-💉 Donation - Blood is collected and processed
-🏥 Transfusion - Recipient receives needed blood
-📊 Records - System updates all information
+Users: Base user information (donors, recipients, staff)
+DonorProfiles: Detailed donor information and preferences
+RecipientProfiles: Recipient information and medical conditions
+BloodTypes: Blood type definitions (A+, A-, B+, etc.)
+BloodCompatibility: Rules for blood type compatibility
+BloodRequests: Blood donation requests from recipients
+BloodDonations: Records of completed donations
+BloodInventory: Available blood units in storage
+DonationProcess: Workflow tracking for each donation
+EmergencyNotifications: Urgent blood need alerts
 
-🛠️ Core Components
-User Management
-Robust system for managing user accounts with role-based access control.
-Blood Matching System
-Sophisticated algorithms ensure safe and compatible blood matching for all transfusion types.
-Donation Workflow Engine
-Streamlined process management from request to fulfillment with complete tracking.
-Inventory Control Center
-Comprehensive blood unit tracking with expiration monitoring and automatic alerts.
-Emergency Response System
-Rapid-response system for urgent blood needs with proximity-based donor matching.
-👨‍💻 Development
-The project follows a clean architecture pattern with separation of concerns:
+System Workflow
+
+Request Creation: Recipient or staff creates a blood request
+Inventory Check: System checks for available matching blood units
+Donor Matching: If no inventory available, system finds matching donors
+Notification: Potential donors are notified based on compatibility and location
+Scheduling: Donor accepts and schedules donation appointment
+Health Check: Donor's health is verified before donation
+Donation: Blood is collected and processed
+Transfusion: Blood is provided to the recipient
+Records & Analytics: System updates records and generates reports
+
+Project Structure
 PRN232_Blood_Donation_Support_System/
-├── 🎮 Controllers/
-├── 💾 Data/
-├── 📋 Models/
-├── 🔧 Services/
-├── 🖥️ Views/
-└── 📄 Program.cs
-👥 Contributing
-We welcome contributions to make this system even better!
+├── Controllers/            # MVC Controllers
+├── Data/                   # Database context and migrations
+├── Models/                 # Entity models
+│   ├── BloodDonation.cs
+│   ├── BloodInventory.cs
+│   ├── BloodRequest.cs
+│   ├── BloodType.cs
+│   ├── DonorProfile.cs
+│   └── ...
+├── Services/               # Business logic services
+├── Views/                  # MVC Views
+├── wwwroot/                # Static files (CSS, JS)
+├── Program.cs              # Application startup
+└── appsettings.json        # Configuration
+Core Components
+1. User Management
+
+Registration and authentication
+Donor and recipient profile management
+Role-based access control (Admin, Staff, Member)
+
+2. Blood Matching System
+
+Comprehensive blood compatibility management
+Support for whole blood and component transfusions
+Intelligent donor-recipient matching algorithms
+
+3. Workflow Management
+
+Process tracking from request to fulfillment
+Status updates and notifications
+Audit logging of all process steps
+
+4. Inventory Control
+
+Blood unit tracking with expiry monitoring
+Component separation records
+Stock level monitoring and alerts
+
+5. Emergency Response
+
+Urgent request handling
+Location-based donor finding
+Priority notification system
+
+Contribution Guidelines
 
 Fork the repository
-Create your feature branch: git checkout -b amazing-feature
-Commit your changes: git commit -m 'Add amazing feature'
-Push to the branch: git push origin amazing-feature
+Create a feature branch (git checkout -b feature/amazing-feature)
+Commit your changes (git commit -m 'Add some amazing feature')
+Push to the branch (git push origin feature/amazing-feature)
 Open a Pull Request
 
-📜 License
+License
 This project is licensed under the MIT License - see the LICENSE file for details.
-🙏 Acknowledgments
+Acknowledgments
 
-Medical professionals who provided domain expertise
-The open-source community for valuable libraries and tools
-All blood donors worldwide who save lives every day
+Entity Framework Core
+ASP.NET Core
+Medical professionals who provided insights on blood donation processes
 
+Contact
+Project Maintainer - your-email@example.com
 
-<p align="center">
-  <b>❤️ Every donation matters. Every life is precious. ❤️</b>
-</p>
-<p align="center">
-  Made with passion by <a href="mailto:your-email@example.com">Your Team</a>
-</p>
+Note: This README provides a high-level overview of the Blood Donation Support System. Detailed documentation for specific components can be found in the project's Wiki or code documentation.
