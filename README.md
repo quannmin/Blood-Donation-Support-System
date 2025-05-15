@@ -1,7 +1,7 @@
 
-https://img.shields.io/badge/version-1.0.0-blue.svg
-https://img.shields.io/badge/license-MIT-green.svg
-https://img.shields.io/badge/.NET-6.0-purple.svg
+https://img.shields.io/badge/version-1.0.0-blue.svg </br>
+https://img.shields.io/badge/license-MIT-green.svg </br>
+https://img.shields.io/badge/.NET-6.0-purple.svg </br>
 <p align="center">
   <img src="https://via.placeholder.com/200x200?text=Blood+Donation" alt="Blood Donation System Logo" width="200" height="200"/>
 </p>
