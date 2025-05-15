@@ -1,0 +1,74 @@
+## Build results
+bin/
+obj/
+out/
+
+## User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+## Mono Auto Generated Files
+mono_crash.*
+
+## Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+## ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+## VS Code settings
+.vscode/
+
+## Visual Studio
+.vs/
+*.dbmdl
+*.bak
+*.log
+
+## DotCover
+*.dotCover
+
+## Rider
+.idea/
+*.sln.iml
+
+## NuGet
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+project.lock.json
+project.fragment.lock.json
+
+## Entity Framework
+Migrations/
+
+## Logs
+*.log
+
+## Publish output
+publish/
+
+## Secrets (user secrets)
+secrets.json
+
+## Resharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+## IIS
+.vsconfig
+*.vspscc
+*.vssscc
+
+## Others
+*.tmp
+*.temp
+*.swp
+*.bak
+*.backup
