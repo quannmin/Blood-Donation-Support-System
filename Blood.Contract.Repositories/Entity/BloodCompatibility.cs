@@ -11,16 +11,14 @@ namespace Blood.Contract.Repositories.Entity
 {
     public class BloodCompatibility : BaseEntity
     {
-        public int DonorBloodTypeId { get; set; }
-        public virtual BloodType DonorBloodType { get; set; }
+        public int DonorBloodGroupId { get; set; }
+        public virtual BloodGroup DonorBloodGroup { get; set; }
 
-        public int RecipientBloodTypeId { get; set; }
-        public virtual BloodType RecipientBloodType { get; set; }
+        public int RecipientBloodGroupId { get; set; }
+        public virtual BloodGroup RecipientBloodGroup { get; set; }
 
-        public string TransfusionType { get; set; } // whole_blood, red_cells, plasma, platelets
+        public string BloodComponent { get; set; } // Loại máu: WholeBlood, RedBloodCells, Plasma, Platelets
 
-        public string CompatibilityLevel { get; set; } // ideal, compatible, incompatible
-
-        public string Notes { get; set; }
+        public bool IsCompatible { get; set; } // Có tương thích không
     }
 }

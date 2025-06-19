@@ -74,6 +74,35 @@ namespace Blood.Repositories.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1809), new TimeSpan(0, 7, 0, 0, 0)),
+                            Description = "Quản trị viên",
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1810), new TimeSpan(0, 7, 0, 0, 0)),
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1814), new TimeSpan(0, 7, 0, 0, 0)),
+                            Description = "Bác sĩ",
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1815), new TimeSpan(0, 7, 0, 0, 0)),
+                            Name = "Doctor",
+                            NormalizedName = "DOCTOR"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1816), new TimeSpan(0, 7, 0, 0, 0)),
+                            Description = "Người dùng",
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1817), new TimeSpan(0, 7, 0, 0, 0)),
+                            Name = "User",
+                            NormalizedName = "USER"
+                        });
                 });
 
             modelBuilder.Entity("Blood.Contract.Repositories.Entity.ApplicationUserRole", b =>
@@ -89,6 +118,107 @@ namespace Blood.Repositories.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = 1,
+                            RoleId = 1
+                        },
+                        new
+                        {
+                            UserId = 2,
+                            RoleId = 2
+                        },
+                        new
+                        {
+                            UserId = 3,
+                            RoleId = 3
+                        },
+                        new
+                        {
+                            UserId = 4,
+                            RoleId = 3
+                        },
+                        new
+                        {
+                            UserId = 5,
+                            RoleId = 3
+                        },
+                        new
+                        {
+                            UserId = 6,
+                            RoleId = 3
+                        });
+                });
+
+            modelBuilder.Entity("Blood.Contract.Repositories.Entity.BlogPost", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Author")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("CreatedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTimeOffset>("CreatedTime")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<int?>("DeletedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTimeOffset?>("DeletedTime")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("LastUpdatedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTimeOffset>("LastUpdatedTime")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BlogPosts");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Author = "Admin",
+                            Content = "Hiến máu là một hành động cao cả, giúp cứu sống nhiều người bệnh cần truyền máu.",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 545, DateTimeKind.Unspecified).AddTicks(7172), new TimeSpan(0, 7, 0, 0, 0)),
+                            ImageUrl = "https://firebasestorage.googleapis.com/v0/b/hairsalonamazing-14369.appspot.com/o/images%2Fworld%20blood%20donor%20day%20social%20media%20template.png?alt=media&token=bc11e9bd-1eac-415b-8c70-20c17fcd340a",
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 545, DateTimeKind.Unspecified).AddTicks(7224), new TimeSpan(0, 7, 0, 0, 0)),
+                            Title = "Tầm quan trọng của hiến máu"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Author = "Bác sĩ Nguyễn Văn A",
+                            Content = "Trước khi đi hiến máu, bạn cần ăn nhẹ, ngủ đủ và không uống rượu bia.",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 545, DateTimeKind.Unspecified).AddTicks(7228), new TimeSpan(0, 7, 0, 0, 0)),
+                            ImageUrl = "https://firebasestorage.googleapis.com/v0/b/hairsalonamazing-14369.appspot.com/o/images%2Fworld%20blood%20donor%20day%20social%20media%20template.png?alt=media&token=bc11e9bd-1eac-415b-8c70-20c17fcd340a",
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 545, DateTimeKind.Unspecified).AddTicks(7229), new TimeSpan(0, 7, 0, 0, 0)),
+                            Title = "Những điều cần biết khi đi hiến máu"
+                        });
                 });
 
             modelBuilder.Entity("Blood.Contract.Repositories.Entity.BloodCompatibility", b =>
@@ -99,7 +229,7 @@ namespace Blood.Repositories.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("CompatibilityLevel")
+                    b.Property<string>("BloodComponent")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -115,8 +245,11 @@ namespace Blood.Repositories.Migrations
                     b.Property<DateTimeOffset?>("DeletedTime")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<int>("DonorBloodTypeId")
+                    b.Property<int>("DonorBloodGroupId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsCompatible")
+                        .HasColumnType("bit");
 
                     b.Property<int?>("LastUpdatedBy")
                         .HasColumnType("int");
@@ -124,27 +257,421 @@ namespace Blood.Repositories.Migrations
                     b.Property<DateTimeOffset>("LastUpdatedTime")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<string>("Notes")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("RecipientBloodTypeId")
+                    b.Property<int>("RecipientBloodGroupId")
                         .HasColumnType("int");
-
-                    b.Property<string>("TransfusionType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DonorBloodTypeId");
+                    b.HasIndex("DonorBloodGroupId");
 
-                    b.HasIndex("RecipientBloodTypeId");
+                    b.HasIndex("RecipientBloodGroupId");
 
                     b.ToTable("BloodCompatibilities");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BloodComponent = "WholeBlood",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1677), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 8,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1678), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            BloodComponent = "WholeBlood",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1683), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 7,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1683), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            BloodComponent = "WholeBlood",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1685), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 1,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1685), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 5
+                        },
+                        new
+                        {
+                            Id = 4,
+                            BloodComponent = "WholeBlood",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1686), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 2,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1687), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 6
+                        },
+                        new
+                        {
+                            Id = 5,
+                            BloodComponent = "WholeBlood",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1688), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 3,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1689), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 5
+                        },
+                        new
+                        {
+                            Id = 6,
+                            BloodComponent = "WholeBlood",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1690), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 8,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1690), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 8
+                        },
+                        new
+                        {
+                            Id = 7,
+                            BloodComponent = "RedBloodCells",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1691), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 8,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1692), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 1
+                        },
+                        new
+                        {
+                            Id = 8,
+                            BloodComponent = "RedBloodCells",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1693), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 8,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1693), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 2
+                        },
+                        new
+                        {
+                            Id = 9,
+                            BloodComponent = "RedBloodCells",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1694), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 8,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1695), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 3
+                        },
+                        new
+                        {
+                            Id = 10,
+                            BloodComponent = "RedBloodCells",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1696), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 8,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1696), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 4
+                        },
+                        new
+                        {
+                            Id = 11,
+                            BloodComponent = "RedBloodCells",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1697), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 8,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1698), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 5
+                        },
+                        new
+                        {
+                            Id = 12,
+                            BloodComponent = "RedBloodCells",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1699), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 8,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1699), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 6
+                        },
+                        new
+                        {
+                            Id = 13,
+                            BloodComponent = "RedBloodCells",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1700), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 8,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1701), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 7
+                        },
+                        new
+                        {
+                            Id = 14,
+                            BloodComponent = "RedBloodCells",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1702), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 8,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1702), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 8
+                        },
+                        new
+                        {
+                            Id = 15,
+                            BloodComponent = "RedBloodCells",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1703), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 7,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1704), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 1
+                        },
+                        new
+                        {
+                            Id = 16,
+                            BloodComponent = "RedBloodCells",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1746), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 7,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1746), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 3
+                        },
+                        new
+                        {
+                            Id = 17,
+                            BloodComponent = "RedBloodCells",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1747), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 7,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1748), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 5
+                        },
+                        new
+                        {
+                            Id = 18,
+                            BloodComponent = "RedBloodCells",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1749), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 7,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1750), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 7
+                        },
+                        new
+                        {
+                            Id = 19,
+                            BloodComponent = "RedBloodCells",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1751), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 1,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1751), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 1
+                        },
+                        new
+                        {
+                            Id = 20,
+                            BloodComponent = "RedBloodCells",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1752), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 1,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1753), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 5
+                        },
+                        new
+                        {
+                            Id = 21,
+                            BloodComponent = "RedBloodCells",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1754), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 2,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1754), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 2
+                        },
+                        new
+                        {
+                            Id = 22,
+                            BloodComponent = "RedBloodCells",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1755), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 2,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1755), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 6
+                        },
+                        new
+                        {
+                            Id = 23,
+                            BloodComponent = "RedBloodCells",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1757), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 3,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1757), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 3
+                        },
+                        new
+                        {
+                            Id = 24,
+                            BloodComponent = "RedBloodCells",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1758), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 3,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1758), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 5
+                        },
+                        new
+                        {
+                            Id = 25,
+                            BloodComponent = "RedBloodCells",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1760), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 4,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1760), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 4
+                        },
+                        new
+                        {
+                            Id = 26,
+                            BloodComponent = "RedBloodCells",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1761), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 4,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1761), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 6
+                        },
+                        new
+                        {
+                            Id = 27,
+                            BloodComponent = "Plasma",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1762), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 5,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1763), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 1
+                        },
+                        new
+                        {
+                            Id = 28,
+                            BloodComponent = "Plasma",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1764), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 6,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1764), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 2
+                        },
+                        new
+                        {
+                            Id = 29,
+                            BloodComponent = "Plasma",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1765), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 5,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1766), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 3
+                        },
+                        new
+                        {
+                            Id = 30,
+                            BloodComponent = "Plasma",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1767), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 6,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1767), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 4
+                        },
+                        new
+                        {
+                            Id = 31,
+                            BloodComponent = "Plasma",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1768), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 1,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1769), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 8
+                        },
+                        new
+                        {
+                            Id = 32,
+                            BloodComponent = "Plasma",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1770), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 5,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1770), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 7
+                        },
+                        new
+                        {
+                            Id = 33,
+                            BloodComponent = "Plasma",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1771), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 7,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1772), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 8
+                        },
+                        new
+                        {
+                            Id = 34,
+                            BloodComponent = "Platelets",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1773), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 5,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1773), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 1
+                        },
+                        new
+                        {
+                            Id = 35,
+                            BloodComponent = "Platelets",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1774), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 5,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1774), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 3
+                        },
+                        new
+                        {
+                            Id = 36,
+                            BloodComponent = "Platelets",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1775), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 5,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1776), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 5
+                        },
+                        new
+                        {
+                            Id = 37,
+                            BloodComponent = "Platelets",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1777), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 5,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1777), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 7
+                        },
+                        new
+                        {
+                            Id = 38,
+                            BloodComponent = "Platelets",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1780), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 6,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1780), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 2
+                        },
+                        new
+                        {
+                            Id = 39,
+                            BloodComponent = "Platelets",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1781), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 6,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1782), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 6
+                        },
+                        new
+                        {
+                            Id = 40,
+                            BloodComponent = "Platelets",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1783), new TimeSpan(0, 7, 0, 0, 0)),
+                            DonorBloodGroupId = 6,
+                            IsCompatible = true,
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1783), new TimeSpan(0, 7, 0, 0, 0)),
+                            RecipientBloodGroupId = 4
+                        });
                 });
 
-            modelBuilder.Entity("Blood.Contract.Repositories.Entity.BloodDonation", b =>
+            modelBuilder.Entity("Blood.Contract.Repositories.Entity.BloodGroup", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -163,336 +690,6 @@ namespace Blood.Repositories.Migrations
 
                     b.Property<DateTimeOffset?>("DeletedTime")
                         .HasColumnType("datetimeoffset");
-
-                    b.Property<DateTime>("DonationDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("DonorId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("HealthCheckId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("InventoryAdded")
-                        .HasColumnType("bit");
-
-                    b.Property<int?>("LastUpdatedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTimeOffset>("LastUpdatedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("Notes")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("Quantity")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int?>("RequestId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("StaffId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TransfusionType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DonorId");
-
-                    b.HasIndex("HealthCheckId")
-                        .IsUnique()
-                        .HasFilter("[HealthCheckId] IS NOT NULL");
-
-                    b.HasIndex("RequestId");
-
-                    b.HasIndex("StaffId");
-
-                    b.ToTable("BloodDonations");
-                });
-
-            modelBuilder.Entity("Blood.Contract.Repositories.Entity.BloodInventory", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("BatchNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("BloodTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CollectionDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("CreatedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTimeOffset>("CreatedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<int?>("DeletedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTimeOffset?>("DeletedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("DiscardedReason")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("DonationId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("ExpiryDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("LastUpdatedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTimeOffset>("LastUpdatedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("Notes")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("QuantityML")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int?>("ReservationId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("StorageLocation")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TestResults")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("Tested")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("TransfusionType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Units")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BloodTypeId");
-
-                    b.HasIndex("DonationId")
-                        .IsUnique()
-                        .HasFilter("[DonationId] IS NOT NULL");
-
-                    b.HasIndex("ReservationId");
-
-                    b.ToTable("BloodInventory");
-                });
-
-            modelBuilder.Entity("Blood.Contract.Repositories.Entity.BloodProcessing", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<bool>("AddedToInventory")
-                        .HasColumnType("bit");
-
-                    b.Property<decimal>("BloodVolume")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int?>("CreatedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTimeOffset>("CreatedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<int?>("DeletedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTimeOffset?>("DeletedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<int>("DonationId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("LastUpdatedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTimeOffset>("LastUpdatedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("Notes")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ProcessId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProcessedBy")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ProcessingStatus")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ProcessingType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ProcessorId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("SeparatedComponents")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("TestResults")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DonationId")
-                        .IsUnique();
-
-                    b.HasIndex("ProcessId");
-
-                    b.HasIndex("ProcessorId");
-
-                    b.ToTable("BloodProcessings");
-                });
-
-            modelBuilder.Entity("Blood.Contract.Repositories.Entity.BloodRequest", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("BloodTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ContactPerson")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ContactPhone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("CreatedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTimeOffset>("CreatedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<int?>("DeletedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTimeOffset?>("DeletedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<int>("FulfilledUnits")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("LastUpdatedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTimeOffset>("LastUpdatedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("Notes")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PatientCondition")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Reason")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("RecipientId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("RequiredBy")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("StaffId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TransfusionType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Urgency")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BloodTypeId");
-
-                    b.HasIndex("RecipientId");
-
-                    b.HasIndex("StaffId");
-
-                    b.ToTable("BloodRequests");
-                });
-
-            modelBuilder.Entity("Blood.Contract.Repositories.Entity.BloodType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int?>("CreatedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTimeOffset>("CreatedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<int?>("DeletedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTimeOffset?>("DeletedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("LastUpdatedBy")
                         .HasColumnType("int");
@@ -506,10 +703,68 @@ namespace Blood.Repositories.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("BloodTypes");
+                    b.ToTable("BloodGroups");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1451), new TimeSpan(0, 7, 0, 0, 0)),
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1488), new TimeSpan(0, 7, 0, 0, 0)),
+                            Name = "A+"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1493), new TimeSpan(0, 7, 0, 0, 0)),
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1493), new TimeSpan(0, 7, 0, 0, 0)),
+                            Name = "A-"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1495), new TimeSpan(0, 7, 0, 0, 0)),
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1495), new TimeSpan(0, 7, 0, 0, 0)),
+                            Name = "B+"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1496), new TimeSpan(0, 7, 0, 0, 0)),
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1497), new TimeSpan(0, 7, 0, 0, 0)),
+                            Name = "B-"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1498), new TimeSpan(0, 7, 0, 0, 0)),
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1498), new TimeSpan(0, 7, 0, 0, 0)),
+                            Name = "AB+"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1499), new TimeSpan(0, 7, 0, 0, 0)),
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1499), new TimeSpan(0, 7, 0, 0, 0)),
+                            Name = "AB-"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1500), new TimeSpan(0, 7, 0, 0, 0)),
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1501), new TimeSpan(0, 7, 0, 0, 0)),
+                            Name = "O+"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1502), new TimeSpan(0, 7, 0, 0, 0)),
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1502), new TimeSpan(0, 7, 0, 0, 0)),
+                            Name = "O-"
+                        });
                 });
 
-            modelBuilder.Entity("Blood.Contract.Repositories.Entity.DonationProcess", b =>
+            modelBuilder.Entity("Blood.Contract.Repositories.Entity.BloodRequest", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -517,87 +772,15 @@ namespace Blood.Repositories.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime?>("AppointmentTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("CreatedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTimeOffset>("CreatedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("CurrentStage")
+                    b.Property<string>("BloodComponent")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("DeletedBy")
+                    b.Property<int>("BloodGroupId")
                         .HasColumnType("int");
 
-                    b.Property<DateTimeOffset?>("DeletedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<DateTime?>("DonationCompletedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("DonorId")
+                    b.Property<int?>("BloodUnitId")
                         .HasColumnType("int");
-
-                    b.Property<string>("HealthCheckResult")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("InventoryId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("LastUpdatedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTimeOffset>("LastUpdatedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("Notes")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ProcessType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("ProcessingCompletedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("RequestId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("StaffId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("TransfusionCompletedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DonorId");
-
-                    b.HasIndex("InventoryId");
-
-                    b.HasIndex("RequestId");
-
-                    b.HasIndex("StaffId");
-
-                    b.ToTable("DonationProcesses");
-                });
-
-            modelBuilder.Entity("Blood.Contract.Repositories.Entity.DonationRequestMatching", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
 
                     b.Property<int?>("CreatedBy")
                         .HasColumnType("int");
@@ -611,8 +794,11 @@ namespace Blood.Repositories.Migrations
                     b.Property<DateTimeOffset?>("DeletedTime")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<int>("DonorId")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("FulfilledDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsEmergency")
+                        .HasColumnType("bit");
 
                     b.Property<int?>("LastUpdatedBy")
                         .HasColumnType("int");
@@ -620,33 +806,42 @@ namespace Blood.Repositories.Migrations
                     b.Property<DateTimeOffset>("LastUpdatedTime")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<DateTime>("MatchingDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Notes")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("RequestId")
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("QuantityFromStock")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("RequestDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("RequestSource")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RequestedById")
                         .HasColumnType("int");
 
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("DonorId");
+                    b.HasIndex("BloodGroupId");
 
-                    b.HasIndex("RequestId");
+                    b.HasIndex("BloodUnitId");
 
-                    b.ToTable("DonationRequestMatching");
+                    b.HasIndex("RequestedById");
+
+                    b.ToTable("BloodRequests");
                 });
 
-            modelBuilder.Entity("Blood.Contract.Repositories.Entity.DonorProfile", b =>
+            modelBuilder.Entity("Blood.Contract.Repositories.Entity.BloodUnit", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -654,7 +849,11 @@ namespace Blood.Repositories.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("BloodTypeId")
+                    b.Property<string>("BloodComponent")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("BloodGroupId")
                         .HasColumnType("int");
 
                     b.Property<int?>("CreatedBy")
@@ -669,23 +868,7 @@ namespace Blood.Repositories.Migrations
                     b.Property<DateTimeOffset?>("DeletedTime")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<int>("DonationCount")
-                        .HasColumnType("int");
-
-                    b.Property<string>("HealthStatus")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal?>("Height")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<bool>("IsAvailable")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsEmergencyAvailable")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("LastDonationDate")
+                    b.Property<DateTime>("ExpiryDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int?>("LastUpdatedBy")
@@ -694,38 +877,49 @@ namespace Blood.Repositories.Migrations
                     b.Property<DateTimeOffset>("LastUpdatedTime")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<string>("MedicalHistory")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("NextAvailableDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Notes")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PreferredDonationType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("UserId")
+                    b.Property<int>("Quantity")
                         .HasColumnType("int");
-
-                    b.Property<decimal?>("Weight")
-                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BloodTypeId");
+                    b.HasIndex("BloodGroupId");
 
-                    b.HasIndex("UserId")
-                        .IsUnique();
+                    b.ToTable("BloodUnits");
 
-                    b.ToTable("DonorProfiles");
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BloodComponent = "WholeBlood",
+                            BloodGroupId = 1,
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 545, DateTimeKind.Unspecified).AddTicks(7301), new TimeSpan(0, 7, 0, 0, 0)),
+                            ExpiryDate = new DateTime(2025, 10, 19, 19, 42, 57, 545, DateTimeKind.Local).AddTicks(7304),
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 545, DateTimeKind.Unspecified).AddTicks(7303), new TimeSpan(0, 7, 0, 0, 0)),
+                            Quantity = 10
+                        },
+                        new
+                        {
+                            Id = 2,
+                            BloodComponent = "Plasma",
+                            BloodGroupId = 2,
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 545, DateTimeKind.Unspecified).AddTicks(7316), new TimeSpan(0, 7, 0, 0, 0)),
+                            ExpiryDate = new DateTime(2025, 10, 19, 19, 42, 57, 545, DateTimeKind.Local).AddTicks(7318),
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 545, DateTimeKind.Unspecified).AddTicks(7317), new TimeSpan(0, 7, 0, 0, 0)),
+                            Quantity = 5
+                        },
+                        new
+                        {
+                            Id = 3,
+                            BloodComponent = "RedBloodCells",
+                            BloodGroupId = 3,
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 545, DateTimeKind.Unspecified).AddTicks(7320), new TimeSpan(0, 7, 0, 0, 0)),
+                            ExpiryDate = new DateTime(2025, 10, 19, 19, 42, 57, 545, DateTimeKind.Local).AddTicks(7321),
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 545, DateTimeKind.Unspecified).AddTicks(7320), new TimeSpan(0, 7, 0, 0, 0)),
+                            Quantity = 8
+                        });
                 });
 
-            modelBuilder.Entity("Blood.Contract.Repositories.Entity.EmergencyNotification", b =>
+            modelBuilder.Entity("Blood.Contract.Repositories.Entity.Donation", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -748,129 +942,8 @@ namespace Blood.Repositories.Migrations
                     b.Property<DateTimeOffset?>("DeletedTime")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<int>("DonorId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("DonorProfileId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("LastUpdatedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTimeOffset>("LastUpdatedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("NotificationMethod")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("RequestId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Response")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("SendAt")
+                    b.Property<DateTime>("DonationDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BloodRequestId");
-
-                    b.HasIndex("DonorProfileId");
-
-                    b.ToTable("EmergencyNotifications");
-                });
-
-            modelBuilder.Entity("Blood.Contract.Repositories.Entity.EmergencyResponder", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("ActualArrivalTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("CreatedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTimeOffset>("CreatedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<int?>("DeletedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTimeOffset?>("DeletedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<int>("DonorId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("EstimatedArrivalTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("LastUpdatedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTimeOffset>("LastUpdatedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<int>("RequestId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ResponseStatus")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("notes")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DonorId");
-
-                    b.HasIndex("RequestId");
-
-                    b.ToTable("EmergencyResponders");
-                });
-
-            modelBuilder.Entity("Blood.Contract.Repositories.Entity.HealthCheck", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("BloodPressure")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("CreatedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTimeOffset>("CreatedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<int?>("DeletedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTimeOffset?>("DeletedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<decimal?>("Hemoglobin")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<bool>("IsEligible")
-                        .HasColumnType("bit");
 
                     b.Property<int?>("LastUpdatedBy")
                         .HasColumnType("int");
@@ -882,143 +955,64 @@ namespace Blood.Repositories.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PerformedBy")
+                    b.Property<int>("Quantity")
                         .HasColumnType("int");
-
-                    b.Property<int>("PerformerId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ProcessId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("Pulse")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ReasonIfIneligible")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal?>("Temperature")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal?>("Weight")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PerformerId");
-
-                    b.HasIndex("ProcessId");
-
-                    b.ToTable("HealthChecks");
-                });
-
-            modelBuilder.Entity("Blood.Contract.Repositories.Entity.ProcessLog", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ActionDetails")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("CreatedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTimeOffset>("CreatedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<int?>("DeletedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTimeOffset?>("DeletedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<int?>("LastUpdatedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTimeOffset>("LastUpdatedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<int?>("PerformedBy")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PerformerId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProcessId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Stage")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("Timestamp")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PerformerId");
-
-                    b.HasIndex("ProcessId");
-
-                    b.ToTable("ProcessLogs");
-                });
-
-            modelBuilder.Entity("Blood.Contract.Repositories.Entity.RecipientProfile", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("BloodTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CreatedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTimeOffset>("CreatedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<int?>("DeletedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTimeOffset?>("DeletedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<bool>("Emergency")
-                        .HasColumnType("bit");
-
-                    b.Property<int?>("LastUpdatedBy")
-                        .HasColumnType("int");
-
-                    b.Property<DateTimeOffset>("LastUpdatedTime")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("MedicalCondition")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Notes")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BloodTypeId");
+                    b.HasIndex("BloodRequestId");
 
-                    b.HasIndex("UserId")
-                        .IsUnique();
+                    b.HasIndex("UserId");
 
-                    b.ToTable("RecipientProfiles");
+                    b.ToTable("Donations");
+                });
+
+            modelBuilder.Entity("Blood.Contract.Repositories.Entity.DonorAvailability", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("AvailableFrom")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("AvailableTo")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("CreatedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTimeOffset>("CreatedTime")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<int?>("DeletedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTimeOffset?>("DeletedTime")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("LastUpdatedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTimeOffset>("LastUpdatedTime")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("DonorAvailabilities");
                 });
 
             modelBuilder.Entity("Blood.Repositories.Entity.ApplicationUser", b =>
@@ -1033,12 +1027,13 @@ namespace Blood.Repositories.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Address")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("AvatarUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("BloodGroupId")
+                        .HasColumnType("int");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -1071,11 +1066,10 @@ namespace Blood.Repositories.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Gender")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsVerified")
-                        .HasColumnType("bit");
+                    b.Property<DateTime?>("LastDonationDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<int?>("LastUpdatedBy")
                         .HasColumnType("int");
@@ -1083,17 +1077,11 @@ namespace Blood.Repositories.Migrations
                     b.Property<DateTimeOffset>("LastUpdatedTime")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<decimal?>("Latitude")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
-
-                    b.Property<decimal?>("Longitude")
-                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -1121,6 +1109,9 @@ namespace Blood.Repositories.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool?>("Status")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
@@ -1129,6 +1120,8 @@ namespace Blood.Repositories.Migrations
                         .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BloodGroupId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -1139,6 +1132,134 @@ namespace Blood.Repositories.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "766b830c-159d-4c42-9e3f-0db4ed16ae14",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1839), new TimeSpan(0, 7, 0, 0, 0)),
+                            Email = "admin@example.com",
+                            EmailConfirmed = true,
+                            FullName = "Quản trị viên",
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1840), new TimeSpan(0, 7, 0, 0, 0)),
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@EXAMPLE.COM",
+                            NormalizedUserName = "ADMIN",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPkIS7jo1Npd0Ew+68fjD/qwi8P8DhS/kB2U55PpLTyGR45sRlEb3d0sVwqYI6YhzQ==",
+                            PhoneNumberConfirmed = false,
+                            RefreshTokenExpiryTime = new DateTimeOffset(new DateTime(2025, 6, 20, 12, 42, 57, 203, DateTimeKind.Unspecified).AddTicks(1912), new TimeSpan(0, 0, 0, 0, 0)),
+                            SecurityStamp = "12923ab2-7d39-4d47-93d8-2a053950bd24",
+                            Status = true,
+                            TwoFactorEnabled = false,
+                            UserName = "admin"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "19ded8ff-92d9-46dd-8d4d-a72bd142c3b9",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 257, DateTimeKind.Unspecified).AddTicks(172), new TimeSpan(0, 7, 0, 0, 0)),
+                            Email = "doctor@example.com",
+                            EmailConfirmed = true,
+                            FullName = "Bác sĩ",
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 257, DateTimeKind.Unspecified).AddTicks(203), new TimeSpan(0, 7, 0, 0, 0)),
+                            LockoutEnabled = false,
+                            NormalizedEmail = "DOCTOR@EXAMPLE.COM",
+                            NormalizedUserName = "DOCTOR",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPun1J2cxN596vs4iA/5/dBtGvXsg05/ovxlufpnbG7FMrs079vr2vuFlVSr8yrhNQ==",
+                            PhoneNumberConfirmed = false,
+                            RefreshTokenExpiryTime = new DateTimeOffset(new DateTime(2025, 6, 20, 12, 42, 57, 257, DateTimeKind.Unspecified).AddTicks(257), new TimeSpan(0, 0, 0, 0, 0)),
+                            SecurityStamp = "bdc37f98-9e97-446c-bdac-723a686d0598",
+                            Status = true,
+                            TwoFactorEnabled = false,
+                            UserName = "doctor"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "f90a5c93-28e5-4fd3-9a28-a29ad2f2cd55",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 313, DateTimeKind.Unspecified).AddTicks(1958), new TimeSpan(0, 7, 0, 0, 0)),
+                            Email = "user@example.com",
+                            EmailConfirmed = true,
+                            FullName = "Người dùng",
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 313, DateTimeKind.Unspecified).AddTicks(1998), new TimeSpan(0, 7, 0, 0, 0)),
+                            LockoutEnabled = false,
+                            NormalizedEmail = "USER@EXAMPLE.COM",
+                            NormalizedUserName = "USER",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEDiJnpw5DvKzBrFCA9tPsqsM2kafjlDdi0vZ7tbvBYTmHs3Iy2TOCbu73DZpZ5l6Q==",
+                            PhoneNumberConfirmed = false,
+                            RefreshTokenExpiryTime = new DateTimeOffset(new DateTime(2025, 6, 20, 12, 42, 57, 313, DateTimeKind.Unspecified).AddTicks(2173), new TimeSpan(0, 0, 0, 0, 0)),
+                            SecurityStamp = "bda2d726-5ed6-4d4e-a255-50626bffaf9b",
+                            Status = true,
+                            TwoFactorEnabled = false,
+                            UserName = "user"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "a15762c2-0fe9-4dae-8613-ec8a8e3c5d0f",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 371, DateTimeKind.Unspecified).AddTicks(2441), new TimeSpan(0, 7, 0, 0, 0)),
+                            Email = "john@example.com",
+                            EmailConfirmed = true,
+                            FullName = "John Doe",
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 371, DateTimeKind.Unspecified).AddTicks(2477), new TimeSpan(0, 7, 0, 0, 0)),
+                            LockoutEnabled = false,
+                            NormalizedEmail = "JOHN@EXAMPLE.COM",
+                            NormalizedUserName = "JOHN",
+                            PasswordHash = "AQAAAAIAAYagAAAAECGLNDWa8AFT50vF8ERF8FezeJ8BrBEctoKlbg5ctUrJLsFwiNL+KsF2Zb/tSi0FdQ==",
+                            PhoneNumberConfirmed = false,
+                            RefreshTokenExpiryTime = new DateTimeOffset(new DateTime(2025, 6, 20, 12, 42, 57, 371, DateTimeKind.Unspecified).AddTicks(2536), new TimeSpan(0, 0, 0, 0, 0)),
+                            SecurityStamp = "bfe4871c-0b8d-418e-8049-20e9c69c1ba8",
+                            Status = true,
+                            TwoFactorEnabled = false,
+                            UserName = "john"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "d9bfa333-8f44-4053-97de-d6c79d52b80b",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 371, DateTimeKind.Unspecified).AddTicks(2551), new TimeSpan(0, 7, 0, 0, 0)),
+                            Email = "jane@example.com",
+                            EmailConfirmed = true,
+                            FullName = "Jane Smith",
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 371, DateTimeKind.Unspecified).AddTicks(2552), new TimeSpan(0, 7, 0, 0, 0)),
+                            LockoutEnabled = false,
+                            NormalizedEmail = "JANE@EXAMPLE.COM",
+                            NormalizedUserName = "JANE",
+                            PasswordHash = "AQAAAAIAAYagAAAAENC+2q0W4Yl5167O49s6YK4EQEVLuot076ytvM2oNbHLXWkVogqbZcc9GSyvhwyRpQ==",
+                            PhoneNumberConfirmed = false,
+                            RefreshTokenExpiryTime = new DateTimeOffset(new DateTime(2025, 6, 20, 12, 42, 57, 371, DateTimeKind.Unspecified).AddTicks(2650), new TimeSpan(0, 0, 0, 0, 0)),
+                            SecurityStamp = "b8dd8d49-8310-4ef8-b4d2-2159d420bdc1",
+                            Status = true,
+                            TwoFactorEnabled = false,
+                            UserName = "jane"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "a02327c0-c703-48ab-b70c-d9527a5780eb",
+                            CreatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 371, DateTimeKind.Unspecified).AddTicks(2653), new TimeSpan(0, 7, 0, 0, 0)),
+                            Email = "alice@example.com",
+                            EmailConfirmed = true,
+                            FullName = "Alice Nguyen",
+                            LastUpdatedTime = new DateTimeOffset(new DateTime(2025, 6, 19, 19, 42, 57, 371, DateTimeKind.Unspecified).AddTicks(2654), new TimeSpan(0, 7, 0, 0, 0)),
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ALICE@EXAMPLE.COM",
+                            NormalizedUserName = "ALICE",
+                            PasswordHash = "AQAAAAIAAYagAAAAENV+JexyEv5NmNwTqbzgKwn778bw+tU/bInIZCuujsO3SP3+QlX0TNxtzm1rbmoveg==",
+                            PhoneNumberConfirmed = false,
+                            RefreshTokenExpiryTime = new DateTimeOffset(new DateTime(2025, 6, 20, 12, 42, 57, 371, DateTimeKind.Unspecified).AddTicks(2663), new TimeSpan(0, 0, 0, 0, 0)),
+                            SecurityStamp = "397d4080-3a68-465b-9fce-181e3dd7a17e",
+                            Status = true,
+                            TwoFactorEnabled = false,
+                            UserName = "alice"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -1250,287 +1371,96 @@ namespace Blood.Repositories.Migrations
 
             modelBuilder.Entity("Blood.Contract.Repositories.Entity.BloodCompatibility", b =>
                 {
-                    b.HasOne("Blood.Contract.Repositories.Entity.BloodType", "DonorBloodType")
+                    b.HasOne("Blood.Contract.Repositories.Entity.BloodGroup", "DonorBloodGroup")
                         .WithMany("DonorCompatibilities")
-                        .HasForeignKey("DonorBloodTypeId")
+                        .HasForeignKey("DonorBloodGroupId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Blood.Contract.Repositories.Entity.BloodType", "RecipientBloodType")
+                    b.HasOne("Blood.Contract.Repositories.Entity.BloodGroup", "RecipientBloodGroup")
                         .WithMany("RecipientCompatibilities")
-                        .HasForeignKey("RecipientBloodTypeId")
+                        .HasForeignKey("RecipientBloodGroupId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("DonorBloodType");
+                    b.Navigation("DonorBloodGroup");
 
-                    b.Navigation("RecipientBloodType");
-                });
-
-            modelBuilder.Entity("Blood.Contract.Repositories.Entity.BloodDonation", b =>
-                {
-                    b.HasOne("Blood.Contract.Repositories.Entity.DonorProfile", "Donor")
-                        .WithMany("BloodDonations")
-                        .HasForeignKey("DonorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Blood.Contract.Repositories.Entity.HealthCheck", "HealthCheck")
-                        .WithOne("BloodDonation")
-                        .HasForeignKey("Blood.Contract.Repositories.Entity.BloodDonation", "HealthCheckId");
-
-                    b.HasOne("Blood.Contract.Repositories.Entity.BloodRequest", "Request")
-                        .WithMany("BloodDonations")
-                        .HasForeignKey("RequestId");
-
-                    b.HasOne("Blood.Repositories.Entity.ApplicationUser", "Staff")
-                        .WithMany("BloodDonations")
-                        .HasForeignKey("StaffId");
-
-                    b.Navigation("Donor");
-
-                    b.Navigation("HealthCheck");
-
-                    b.Navigation("Request");
-
-                    b.Navigation("Staff");
-                });
-
-            modelBuilder.Entity("Blood.Contract.Repositories.Entity.BloodInventory", b =>
-                {
-                    b.HasOne("Blood.Contract.Repositories.Entity.BloodType", "BloodType")
-                        .WithMany("BloodInventories")
-                        .HasForeignKey("BloodTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Blood.Contract.Repositories.Entity.BloodDonation", "Donation")
-                        .WithOne("BloodInventory")
-                        .HasForeignKey("Blood.Contract.Repositories.Entity.BloodInventory", "DonationId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("Blood.Contract.Repositories.Entity.BloodRequest", "Reservation")
-                        .WithMany()
-                        .HasForeignKey("ReservationId");
-
-                    b.Navigation("BloodType");
-
-                    b.Navigation("Donation");
-
-                    b.Navigation("Reservation");
-                });
-
-            modelBuilder.Entity("Blood.Contract.Repositories.Entity.BloodProcessing", b =>
-                {
-                    b.HasOne("Blood.Contract.Repositories.Entity.BloodDonation", "Donation")
-                        .WithOne("BloodProcessing")
-                        .HasForeignKey("Blood.Contract.Repositories.Entity.BloodProcessing", "DonationId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Blood.Contract.Repositories.Entity.DonationProcess", "Process")
-                        .WithMany("BloodProcessings")
-                        .HasForeignKey("ProcessId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Blood.Repositories.Entity.ApplicationUser", "Processor")
-                        .WithMany()
-                        .HasForeignKey("ProcessorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Donation");
-
-                    b.Navigation("Process");
-
-                    b.Navigation("Processor");
+                    b.Navigation("RecipientBloodGroup");
                 });
 
             modelBuilder.Entity("Blood.Contract.Repositories.Entity.BloodRequest", b =>
                 {
-                    b.HasOne("Blood.Contract.Repositories.Entity.BloodType", "BloodType")
+                    b.HasOne("Blood.Contract.Repositories.Entity.BloodGroup", "BloodGroup")
                         .WithMany("BloodRequests")
-                        .HasForeignKey("BloodTypeId")
+                        .HasForeignKey("BloodGroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Blood.Contract.Repositories.Entity.BloodUnit", "BloodUnit")
+                        .WithMany("BloodRequests")
+                        .HasForeignKey("BloodUnitId");
+
+                    b.HasOne("Blood.Repositories.Entity.ApplicationUser", "RequestedBy")
+                        .WithMany("BloodRequests")
+                        .HasForeignKey("RequestedById")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BloodGroup");
+
+                    b.Navigation("BloodUnit");
+
+                    b.Navigation("RequestedBy");
+                });
+
+            modelBuilder.Entity("Blood.Contract.Repositories.Entity.BloodUnit", b =>
+                {
+                    b.HasOne("Blood.Contract.Repositories.Entity.BloodGroup", "BloodGroup")
+                        .WithMany("BloodUnits")
+                        .HasForeignKey("BloodGroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BloodGroup");
+                });
+
+            modelBuilder.Entity("Blood.Contract.Repositories.Entity.Donation", b =>
+                {
+                    b.HasOne("Blood.Contract.Repositories.Entity.BloodRequest", "BloodRequest")
+                        .WithMany("Donations")
+                        .HasForeignKey("BloodRequestId")
                         .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Blood.Contract.Repositories.Entity.RecipientProfile", "Recipient")
-                        .WithMany("BloodRequests")
-                        .HasForeignKey("RecipientId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Blood.Repositories.Entity.ApplicationUser", "Staff")
-                        .WithMany("BloodRequests")
-                        .HasForeignKey("StaffId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.Navigation("BloodType");
-
-                    b.Navigation("Recipient");
-
-                    b.Navigation("Staff");
-                });
-
-            modelBuilder.Entity("Blood.Contract.Repositories.Entity.DonationProcess", b =>
-                {
-                    b.HasOne("Blood.Contract.Repositories.Entity.DonorProfile", "Donor")
-                        .WithMany()
-                        .HasForeignKey("DonorId");
-
-                    b.HasOne("Blood.Contract.Repositories.Entity.BloodInventory", "Inventory")
-                        .WithMany()
-                        .HasForeignKey("InventoryId");
-
-                    b.HasOne("Blood.Contract.Repositories.Entity.BloodRequest", "Request")
-                        .WithMany("DonationProcesses")
-                        .HasForeignKey("RequestId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Blood.Repositories.Entity.ApplicationUser", "Staff")
-                        .WithMany()
-                        .HasForeignKey("StaffId");
-
-                    b.Navigation("Donor");
-
-                    b.Navigation("Inventory");
-
-                    b.Navigation("Request");
-
-                    b.Navigation("Staff");
-                });
-
-            modelBuilder.Entity("Blood.Contract.Repositories.Entity.DonationRequestMatching", b =>
-                {
-                    b.HasOne("Blood.Contract.Repositories.Entity.DonorProfile", "Donor")
-                        .WithMany("DonationRequestMatchings")
-                        .HasForeignKey("DonorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Blood.Contract.Repositories.Entity.BloodRequest", "Request")
-                        .WithMany("DonationRequestMatchings")
-                        .HasForeignKey("RequestId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Donor");
-
-                    b.Navigation("Request");
-                });
-
-            modelBuilder.Entity("Blood.Contract.Repositories.Entity.DonorProfile", b =>
-                {
-                    b.HasOne("Blood.Contract.Repositories.Entity.BloodType", "BloodType")
-                        .WithMany("DonorProfiles")
-                        .HasForeignKey("BloodTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Blood.Repositories.Entity.ApplicationUser", "User")
-                        .WithOne("DonorProfile")
-                        .HasForeignKey("Blood.Contract.Repositories.Entity.DonorProfile", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("BloodType");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Blood.Contract.Repositories.Entity.EmergencyNotification", b =>
-                {
-                    b.HasOne("Blood.Contract.Repositories.Entity.BloodRequest", "BloodRequest")
-                        .WithMany("EmergencyNotifications")
-                        .HasForeignKey("BloodRequestId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Blood.Contract.Repositories.Entity.DonorProfile", "DonorProfile")
-                        .WithMany("EmergencyNotifications")
-                        .HasForeignKey("DonorProfileId")
+                        .WithMany("Donations")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("BloodRequest");
 
-                    b.Navigation("DonorProfile");
+                    b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Blood.Contract.Repositories.Entity.EmergencyResponder", b =>
+            modelBuilder.Entity("Blood.Contract.Repositories.Entity.DonorAvailability", b =>
                 {
-                    b.HasOne("Blood.Contract.Repositories.Entity.DonorProfile", "Donor")
-                        .WithMany("EmergencyResponders")
-                        .HasForeignKey("DonorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Blood.Contract.Repositories.Entity.BloodRequest", "Request")
-                        .WithMany("EmergencyResponders")
-                        .HasForeignKey("RequestId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Donor");
-
-                    b.Navigation("Request");
-                });
-
-            modelBuilder.Entity("Blood.Contract.Repositories.Entity.HealthCheck", b =>
-                {
-                    b.HasOne("Blood.Repositories.Entity.ApplicationUser", "Performer")
-                        .WithMany()
-                        .HasForeignKey("PerformerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Blood.Contract.Repositories.Entity.DonationProcess", "Process")
-                        .WithMany("HealthChecks")
-                        .HasForeignKey("ProcessId");
-
-                    b.Navigation("Performer");
-
-                    b.Navigation("Process");
-                });
-
-            modelBuilder.Entity("Blood.Contract.Repositories.Entity.ProcessLog", b =>
-                {
-                    b.HasOne("Blood.Repositories.Entity.ApplicationUser", "Performer")
-                        .WithMany()
-                        .HasForeignKey("PerformerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Blood.Contract.Repositories.Entity.DonationProcess", "Process")
-                        .WithMany("ProcessLogs")
-                        .HasForeignKey("ProcessId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Performer");
-
-                    b.Navigation("Process");
-                });
-
-            modelBuilder.Entity("Blood.Contract.Repositories.Entity.RecipientProfile", b =>
-                {
-                    b.HasOne("Blood.Contract.Repositories.Entity.BloodType", "BloodType")
-                        .WithMany("RecipientProfiles")
-                        .HasForeignKey("BloodTypeId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("Blood.Repositories.Entity.ApplicationUser", "User")
-                        .WithOne("RecipientProfile")
-                        .HasForeignKey("Blood.Contract.Repositories.Entity.RecipientProfile", "UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .WithMany("DonorAvailabilities")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("BloodType");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Blood.Repositories.Entity.ApplicationUser", b =>
+                {
+                    b.HasOne("Blood.Contract.Repositories.Entity.BloodGroup", "BloodGroup")
+                        .WithMany("Users")
+                        .HasForeignKey("BloodGroupId");
+
+                    b.Navigation("BloodGroup");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -1574,85 +1504,36 @@ namespace Blood.Repositories.Migrations
                     b.Navigation("UserRoles");
                 });
 
-            modelBuilder.Entity("Blood.Contract.Repositories.Entity.BloodDonation", b =>
+            modelBuilder.Entity("Blood.Contract.Repositories.Entity.BloodGroup", b =>
                 {
-                    b.Navigation("BloodInventory")
-                        .IsRequired();
+                    b.Navigation("BloodRequests");
 
-                    b.Navigation("BloodProcessing")
-                        .IsRequired();
+                    b.Navigation("BloodUnits");
+
+                    b.Navigation("DonorCompatibilities");
+
+                    b.Navigation("RecipientCompatibilities");
+
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("Blood.Contract.Repositories.Entity.BloodRequest", b =>
                 {
-                    b.Navigation("BloodDonations");
-
-                    b.Navigation("DonationProcesses");
-
-                    b.Navigation("DonationRequestMatchings");
-
-                    b.Navigation("EmergencyNotifications");
-
-                    b.Navigation("EmergencyResponders");
+                    b.Navigation("Donations");
                 });
 
-            modelBuilder.Entity("Blood.Contract.Repositories.Entity.BloodType", b =>
-                {
-                    b.Navigation("BloodInventories");
-
-                    b.Navigation("BloodRequests");
-
-                    b.Navigation("DonorCompatibilities");
-
-                    b.Navigation("DonorProfiles");
-
-                    b.Navigation("RecipientCompatibilities");
-
-                    b.Navigation("RecipientProfiles");
-                });
-
-            modelBuilder.Entity("Blood.Contract.Repositories.Entity.DonationProcess", b =>
-                {
-                    b.Navigation("BloodProcessings");
-
-                    b.Navigation("HealthChecks");
-
-                    b.Navigation("ProcessLogs");
-                });
-
-            modelBuilder.Entity("Blood.Contract.Repositories.Entity.DonorProfile", b =>
-                {
-                    b.Navigation("BloodDonations");
-
-                    b.Navigation("DonationRequestMatchings");
-
-                    b.Navigation("EmergencyNotifications");
-
-                    b.Navigation("EmergencyResponders");
-                });
-
-            modelBuilder.Entity("Blood.Contract.Repositories.Entity.HealthCheck", b =>
-                {
-                    b.Navigation("BloodDonation")
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Blood.Contract.Repositories.Entity.RecipientProfile", b =>
+            modelBuilder.Entity("Blood.Contract.Repositories.Entity.BloodUnit", b =>
                 {
                     b.Navigation("BloodRequests");
                 });
 
             modelBuilder.Entity("Blood.Repositories.Entity.ApplicationUser", b =>
                 {
-                    b.Navigation("BloodDonations");
-
                     b.Navigation("BloodRequests");
 
-                    b.Navigation("DonorProfile")
-                        .IsRequired();
+                    b.Navigation("Donations");
 
-                    b.Navigation("RecipientProfile")
-                        .IsRequired();
+                    b.Navigation("DonorAvailabilities");
 
                     b.Navigation("UserRoles");
                 });

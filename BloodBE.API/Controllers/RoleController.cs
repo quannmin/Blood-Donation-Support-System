@@ -3,7 +3,7 @@ using Blood.Contract.Services.Interface;
 using Blood.Core;
 using Blood.ModelViews.RoleModelViews;
 
-namespace TeamUp.API.Controllers
+namespace BloodBE.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

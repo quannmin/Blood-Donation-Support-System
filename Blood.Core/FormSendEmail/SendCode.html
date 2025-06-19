@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quên Mật Khẩu</title>
+    <style>
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .email-container {
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .email-content {
+            background-color: #ffffff;
+            border: 1px solid #dedede;
+            border-radius: 3px;
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .email-header {
+            background-color: #ffffff;
+            color: #000000;
+            padding: 36px 48px;
+            border-radius: 3px 3px 0 0;
+            text-align: center;
+        }
+
+            .email-header h1 {
+                font-size: 30px;
+                font-weight: 300;
+                margin: 0;
+            }
+
+        .email-logo {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+            .email-logo img {
+                width: 230px;
+                height: 230px;
+            }
+
+        .email-body {
+            padding: 48px;
+            padding-top: 0;
+            text-align: center;
+        }
+
+            .email-body h2 {
+                color: #000000;
+                font-size: 18px;
+                font-weight: bold;
+                margin: 0 0 18px;
+            }
+
+            .email-body p {
+                color: #000000;
+                font-size: 14px;
+                line-height: 150%;
+                margin: 0 0 16px;
+            }
+
+        .code {
+            font-size: 32px;
+            font-weight: bold;
+            color: #000000;
+            background-color: #f0f0f0;
+            padding: 15px 25px;
+            border-radius: 6px;
+            display: inline-block;
+            letter-spacing: 4px;
+            margin: 20px 0;
+        }
+
+        .form-group {
+            margin-top: 20px;
+        }
+
+            .form-group p {
+                margin-top: 20px;
+                font-size: 13px;
+            }
+
+        .footer {
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #eee;
+            background-color: #fafafa;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="email-content">
+            <div class="email-header">
+                <h1>BLOOD DONATION</h1>
+            </div>
+            <div class="email-logo">
+                <img src="https://firebasestorage.googleapis.com/v0/b/hairsalonamazing-14369.appspot.com/o/images%2Fworld%20blood%20donor%20day%20social%20media%20template.png?alt=media&token=bc11e9bd-1eac-415b-8c70-20c17fcd340a" alt="Logo">
+            </div>
+            <div class="email-body">
+                <h2>Quên mật khẩu</h2>
+                <p>Vui lòng sử dụng mã xác thực dưới đây để đặt lại mật khẩu của bạn:</p>
+                <div class="code">{{OTP}}</div>
+                <div class="form-group">
+                    <p>Lưu ý: Mã có hiệu lực trong 10 phút. Không chia sẻ mã này với bất kỳ ai.</p>
+                </div>
+                <p>Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi!</p>
+            </div>
+            <div class="footer">
+                © 2025 BLOOD DONATION. Mọi quyền được bảo lưu.<br>
+                Email này được gửi tự động, vui lòng không phản hồi.
+            </div>
+        </div>
+    </div>
+</body>
+</html>
