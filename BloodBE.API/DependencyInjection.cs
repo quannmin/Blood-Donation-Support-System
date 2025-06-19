@@ -25,6 +25,7 @@ namespace BloodBE.API
             services.AddInfrastructure(configuration);
             services.AddServices();
             services.AddAutoMapperProfiles();
+            services.AddMemoryCache();
         }
         public static void ConfigRoute(this IServiceCollection services)
         {
@@ -54,6 +55,13 @@ namespace BloodBE.API
         {
             services
                 .AddScoped<IRoleService, RoleService>()
+                .AddScoped<IBloodGroupService, BloodGroupService>()
+                .AddScoped<IBloodCompatibilityService, BloodCompatibilityService>()
+                .AddScoped<IBloodUnitService, BloodUnitService>()
+                .AddScoped<IBlogPostService, BlogPostService>()
+                .AddScoped<IDonorAvailabilityService, DonorAvailabilityService>()
+                .AddScoped<IBloodRequestService, BloodRequestService>()
+                .AddScoped<IDonationService, DonationService>()
                 .AddScoped<IUserService, UserService>();
         }
 
@@ -85,7 +93,7 @@ namespace BloodBE.API
         {
             services.AddSwaggerGen(option =>
             {
-                option.SwaggerDoc("v1", new OpenApiInfo { Title = "TeamUp", Version = "v1" });
+                option.SwaggerDoc("v1", new OpenApiInfo { Title = "BloodDonation", Version = "v1" });
                 option.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     In = ParameterLocation.Header,

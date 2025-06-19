@@ -8,21 +8,21 @@ namespace Blood.Repositories.Entity
 {
     public class ApplicationUser : IdentityUser<int>
     {
-        public string FullName { get; set; }
-
         public DateTime? DateOfBirth { get; set; }
 
-        public string Gender { get; set; } // male, female, other
+        public string? Gender { get; set; } // male, female, other
 
-        public string Address { get; set; }
+        public string? AvatarUrl { get; set; }
 
-        public decimal? Latitude { get; set; }
+        public bool? Status { get; set; }
 
-        public decimal? Longitude { get; set; }
+        public string FullName { get; set; } // Họ tên
 
-        public string AvatarUrl { get; set; }
+        public int? BloodGroupId { get; set; } // ID nhóm máu
 
-        public bool IsVerified { get; set; }
+        public string? Address { get; set; } // Địa chỉ
+
+        public DateTime? LastDonationDate { get; set; } // Ngày hiến máu cuối cùng
 
         public int? CreatedBy { get; set; }
         public int? LastUpdatedBy { get; set; }
@@ -36,10 +36,10 @@ namespace Blood.Repositories.Entity
 
         public virtual ICollection<ApplicationUserRole> UserRoles { get; set; }
 
-        public virtual DonorProfile DonorProfile { get; set; }
-        public virtual RecipientProfile RecipientProfile { get; set; }
-        public virtual ICollection<BloodDonation> BloodDonations { get; set; }
+        public virtual BloodGroup? BloodGroup { get; set; } // Liên kết với bảng BloodGroup
+        public virtual ICollection<DonorAvailability> DonorAvailabilities { get; set; }
         public virtual ICollection<BloodRequest> BloodRequests { get; set; }
+        public virtual ICollection<Donation> Donations { get; set; }
 
     }
 }
