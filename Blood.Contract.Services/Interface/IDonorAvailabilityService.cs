@@ -17,5 +17,7 @@ namespace Blood.Contract.Services.Interface
         Task<ApiResult<object>> AddAsync(CreateDonorAvailabilityModelView model);
         Task<ApiResult<object>> UpdateAsync(int id, UpdateDonorAvailabilityModelView model);
         Task<ApiResult<object>> DeleteAsync(int id);
+
+        Task<ApiResult<DonorAvailabilityModelView>> GetDonorAvailabilityByUserIdAsync(int userId);
     }
 }

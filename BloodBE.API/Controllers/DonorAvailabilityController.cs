@@ -123,5 +123,22 @@ namespace BloodBE.API.Controllers
                 return BadRequest(new ApiErrorResult<object>(ex.Message));
             }
         }
+
+        /// <summary>
+        /// Get donor availability by userID
+        /// </summary>
+        [HttpGet("getby/{userId}")]
+        public async Task<IActionResult> GetDonorAvailabilityByUserId(int userId)
+        {
+            try
+            {
+                var result = await _donorAvailabilityService.GetDonorAvailabilityByUserIdAsync(userId);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ApiErrorResult<object>(ex.Message));
+            }
+        }
     }
 }
