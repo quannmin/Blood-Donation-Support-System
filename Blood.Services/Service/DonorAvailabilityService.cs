@@ -132,6 +132,19 @@ namespace Blood.Services.Service
 
             return new ApiSuccessResult<object>("Updated successfully");
         }
+
+        public async Task<ApiResult<DonorAvailabilityModelView>> GetDonorAvailabilityByUserIdAsync(int userId)
+        {
+            var entity = await _unitOfWork.GetRepository<DonorAvailability>().Entities
+                .Include(x => x.User)
+                .FirstOrDefaultAsync(x => x.UserId == userId && !x.DeletedTime.HasValue);
+
+            if (entity == null)
+                return new ApiErrorResult<DonorAvailabilityModelView>("Donor availability not found for this user");
+
+            var model = _mapper.Map<DonorAvailabilityModelView>(entity);
+            return new ApiSuccessResult<DonorAvailabilityModelView>(model);
+        }
     }
 
 }
